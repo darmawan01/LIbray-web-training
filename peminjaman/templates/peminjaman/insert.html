@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+{% load widget_tweaks %}
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Tambah Peminjaman</h4>
+    </div>
+    <div class="panel-body">
+        <form method="POST" action="{% url 'peminjaman:save' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="" class="control-label">Tanggal Pinjam</label> 
+                {{form.tgl_pinjam | add_class:"form-control"}}
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label">Batas Pinjam</label> 
+                {{form.bts_pinjam | add_class:"form-control"}}
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label">Buku</label> 
+                {{form.buku | add_class:"form-control"}}
+            </div>
+            <div class="form-group">
+                 <label for="" class="control-label">Mahasiswa</label> 
+                 {{form.mahasiswa | add_class:"form-control"}}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary pull-right" style="margin-left: 8px;">Simpan <i class="fa fa-plus"></i></button>
+                <a href="/peminjaman/" class="btn btn-danger pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

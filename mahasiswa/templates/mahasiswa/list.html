@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{%block content%}
+<a href="{% url 'mahasiswa:add' %}" class="btn btn-primary" style="margin-bottom: 8px;">Tambah Mahasiswa <i class="fa fa-plus"></i></a>
+<table id="tbl" class="table table-striped table-hovered table-bordered">
+    <thead>
+        <tr>
+            <th>Nomor</th>
+            <th>Nim</th>
+            <th>Nama</th>
+            <th>Prodi</th>
+            <th>Semester</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for mahasiswa in list_mhs%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{mahasiswa.nim}}</td>
+            <td>{{mahasiswa.nama}}</td>
+            <td>{{mahasiswa.prodi}}</td>
+            <td>{{mahasiswa.semester}}</td>
+            <td>
+                <div class="btn-groub">
+                    <a href="{% url 'mahasiswa:edit' id=mahasiswa.pk %}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                    <a href="{% url 'mahasiswa:remove' id=mahasiswa.pk %}" class="btn btn-danger" onclick="return confirm('Yakin nih mau ngapus aku? :(')"><i class="fa fa-trash"></i></a>
+                </div>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock content %} {% block js %}
+<script>
+    $(document).ready(function () {
+        $('#tbl').DataTable();
+    });
+</script>
+{% endblock js %}

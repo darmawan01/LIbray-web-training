@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+{% load widget_tweaks %} {% block content %}
+<a href="{% url 'peminjaman:add' %}" class="btn btn-primary" style="margin-bottom: 8px;">Peminjaman<i class="fa fa-plus"></i></a>
+<table id="tbl" class="table table-striped table-hovered table-bordered" border="2px">
+    <thead>
+        <tr>
+            <th>Nomor</th>
+            <th>Tanggal Pinjam</th>
+            <th>Batas Pinjam</th>
+            <th>Nama Buku</th>
+            <th>Nama Peminjam</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for peminjaman in list_peminjaman %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{peminjaman.tgl_pinjam}}</td>
+            <td>{{peminjaman.bts_pinjam}}</td>
+            <td>{{peminjaman.buku}}</td>
+            <td>{{peminjaman.mahasiswa}}</td>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

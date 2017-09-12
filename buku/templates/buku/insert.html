@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+{%load widget_tweaks%}
+{%block content%}
+<div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Tambah Buku</h4>
+        </div>
+        <div class="panel-body">
+            <form method="POST" action="{% url 'buku:save' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="" class="control-label">Nama</label> 
+                    {{form.nama | add_class:"form-control"}}
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Pengarang</label> 
+                    {{form.pengarang | add_class:"form-control"}}
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Penerbit</label> 
+                    {{form.penerbit | add_class:"form-control"}}
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Tahun Terbit</label> 
+                    {{form.thn_terbit | add_class:"form-control"}}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary pull-right" style="margin-left: 8px;">Simpan</button>
+                    <a href="/buku/" class="btn btn-danger pull-right">Kembali</a>
+                </div>
+            </form>
+        </div>
+    </div> 
+{%endblock content%}

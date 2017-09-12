@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{%block content%}
+<a href="{% url 'buku:add' %}" class="btn btn-primary" style="margin-bottom: 8px;">Tambah Buku <i class="fa fa-plus"></i></a>
+<table id="tbl" class="table table-striped table-hovered table-bordered">
+    <thead>
+        <tr>
+            <th>Nomor</th>
+            <th>Nama</th>
+            <th>Pengarang</th>
+            <th>Penerbit</th>
+            <th>Tahun Terbit</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for buku in list_buku%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{buku.nama}}</td>
+            <td>{{buku.pengarang}}</td>
+            <td>{{buku.penerbit}}</td>
+            <td>{{buku.thn_terbit}}</td>
+            <td>
+                <div class="btn-groub">
+                    <a href="{% url 'buku:edit' id=buku.pk %}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                    <a href="{% url 'buku:remove' id=buku.pk %}" class="btn btn-danger" onclick="return confirm('Yakin nih mau ngapus aku? :(')"><i class="fa fa-trash"></i></a>        
+                </div>
+            </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock content %} {% block js %}
+<script>
+    $(document).ready(function () {
+        $('#tbl').DataTable();
+    });
+</script>
+{% endblock js %}

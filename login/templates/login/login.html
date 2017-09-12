@@ -1,0 +1,39 @@
+{%load staticfiles%}
+{%load widget_tweaks%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">{% include "static.html" %}
+
+  </head>
+  <body>
+    <div class="row" style="margin-top: 8%">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>Login Admin</h2>
+                </div>
+                <div class="panel-body">
+                    <form action="{% url 'dologin' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="" class="control-label">Username</label>
+                            {% render_field form.username class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="control-label">Password</label>
+                            {% render_field form.password class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary pull-right" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
